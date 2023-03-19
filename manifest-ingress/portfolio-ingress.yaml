@@ -5,8 +5,8 @@ metadata:
   name: portfolio-ingress
   namespace: portfolio
   annotations:
-    kubernetes.io/ingress.class: nginx  
-    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name
+    kubernetes.io/ingress.className: "nginx"  
+    cert-manager.io/cluster-issuer: cert-manager
 spec:
   tls:
    - hosts:

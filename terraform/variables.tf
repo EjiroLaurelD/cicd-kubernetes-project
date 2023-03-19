@@ -91,7 +91,7 @@ variable "jenkins_admin_user" {
   type = string
   description = "jenkins user password"
 }
-variable "honeycomb_api_key"{
-  type = string
-  description = "PAi key to access honeycomb.io"
-}
+#variable "honeycomb_api_key"{
+ # type = string
+  #description = "PAi key to access honeycomb.io"
+#}
