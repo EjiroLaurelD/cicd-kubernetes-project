@@ -1,0 +1,85 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio
+  namespace: portfolio
+  annotations:
+    kubernetes.io/ingress.class: nginx      
+    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name
+spec:
+  tls:
+   - hosts:
+     secretName: 
+  rules:
+    - host: "portfolio.ejirolaureld.me"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio
+                port:
+                  number: 80
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: sockshop-ingress
+  namespace: sock-shop
+  annotations:
+    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name     
+spec:
+  rules:
+    - host: "sockshop.ejirolaureld.me"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front-end
+                port:
+                  number: 8079
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-ingress
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name     
+spec:
+  rules:
+    - host: "prometheus.ejirolaureld.me"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name   
+spec:
+  rules:
+    - host: "grafana.ejirolaureld.me"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-service
+                port:
+                  number: 80

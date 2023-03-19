@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: name
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: grafana.ejirolaureld.me
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: grafana
+              servicePort: 8080
+
+    - host: prometheus.ejirolaureld.me
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: prometheus
+              servicePort: 8080
+
+
+    - host: sockshop.ejirolaureld.me
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sockshop
+              servicePort: 8080
+
+
+    - host: portfolio.ejirolaureld.me
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: portfolio
+              servicePort: 8080
+
+
+
+
+

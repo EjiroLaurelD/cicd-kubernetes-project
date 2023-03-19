@@ -1,0 +1,34 @@
+resource "helm_release" "jenkins" {
+  name             = "jenkins"
+  repository       = "https://charts.jenkins.io"
+  chart            = "jenkins"
+  version          = "3.11.3"
+  namespace        = "jenkins"
+  create_namespace = true
+
+
+  values = [
+    "${file("jenkins_values.yaml")}"
+  ]
+
+  set {
+    name  = "cluster.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "metrics.enabled"
+    value = "true"
+  }
+
+  set_sensitive {
+    name  = "controller.adminUser"
+    value = var.jenkins_admin_user
+  }
+
+  set_sensitive {
+    name  = "controller.adminPassword"
+    value = var.jenkins_admin_password
+  }
+}
+

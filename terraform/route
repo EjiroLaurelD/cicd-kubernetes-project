@@ -1,0 +1,74 @@
+data "aws_route53_zone" "hosted-zone" {
+  name         = "ejirolaureld.me"
+  private_zone = false
+}
+
+resource "aws_route53_record" "portfolio" {
+  name    = "portfolio.ejirolaureld.me"
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = kubernetes_service.portfolio.*.status.load_balancer.ingress[0].hostname
+    zone_id                = data.aws_route53_zone.main.zone_id
+    evaluate_target_health = false
+  }
+}
+resource "aws_route53_record" "sockshop" {
+  name    = "sockshop.ejirolaureld.me"
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = kubernetes_service.sockshop.*.status.load_balancer.ingress[0].hostname
+    zone_id                = data.aws_route53_zone.main.zone_id
+    evaluate_target_health = false
+  }
+}
+
+
+# Create Grafana DNS record
+resource "aws_route53_record" "grafana" {
+  name    = "grafana.ejirolaureld.me"
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = kubernetes_service.grafana.*.status.load_balancer.ingress[0].hostname
+    zone_id                = data.aws_route53_zone.main.zone_id
+    evaluate_target_health = false
+  }
+}
+
+# Create Prometheus DNS record
+resource "aws_route53_record" "prometheus" {
+  name    = "prometheus.ejirolaureld.me"
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = kubernetes_service.prometheus.*.status.load_balancer.ingress[0].hostname
+    zone_id                = data.aws_route53_zone.main.zone_id
+    evaluate_target_health = false
+  }
+}
+
+
+data "local_file" "lb_hostname" {
+  filename = "${path.module}/lb_hostname.txt"
+  depends_on = [null_resource.get_nlb_hostname]
+}
+
+resource "aws_route53_record" "ingress-lb" {
+  zone_id = data.aws_route53_zone.domain.zone_id
+  name    = "domainname"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.local_file.lb_hostname.content]
+
+  depends_on = [data.local_file.lb_hostname]
+}
+
+resource "null_resource" "get_nlb_hostname" {
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --name '${var.cluster_name}' --region ${var.region} && kubectl get svc fullnameOverridevalue-controller.namevalue -n '${kubernetes_namespace.nginx-controller.metadata[0].name}' -o jsonpath='{.status.loadBalancer.ingress[*].hostname}' > ${path.module}/lb_hostname.txt"
+  }
+
+  depends_on = [module.nginx-controller]
+}

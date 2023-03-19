@@ -1,0 +1,50 @@
+module "nginx-controller" {
+  source  = "terraform-iaac/nginx-controller/helm"
+
+  additional_set = [
+    {
+      name  = "controller.Service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
+      value = "nlb"
+      type  = "string"
+    },
+    {
+      name = "fullnameOverride"
+      value = "app-deployment"
+    },
+    {
+      name = "controller.name"
+      value = "controller"
+    },
+    {
+      name  = "controller.Service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-cross-zone-load-balancing-enabled"
+      value = "true"
+      type  = "string"
+    },
+      {
+      name = "controller.metrics.enabled"
+      value = "true"
+    },
+    {
+      name = "controller.metrics.ServiceMonitor.enabled"
+      value = "true"
+    },
+    {
+      name = "controller.metrics.ServiceMonitor.additionalLabels.release"
+      value = "prometheus-operator"
+    },
+    {
+      name = "cert-manager.io/cluster-issuer"
+      value = module.cert_manager.cluster_issuer_name
+    }
+  ]
+}
+
+
+resource "null_resource" "get_nlb_hostname" {
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --name 'eks-cluster-dev-env-us-east-1' --region ${var.region} && kubectl get svc fullnameOverridevalue-controller.namevalue -n 'kube-system' -o jsonpath='{.status.loadBalancer.ingress[*].hostname}' > ${path.module}/lb_hostname.txt"
+  }
+
+  depends_on = [module.nginx-controller]
+}
+

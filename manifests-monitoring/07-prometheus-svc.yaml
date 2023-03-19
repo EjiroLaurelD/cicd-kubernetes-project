@@ -10,7 +10,7 @@ metadata:
 spec:
   selector:
     app: prometheus
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: prometheus
     protocol: TCP
