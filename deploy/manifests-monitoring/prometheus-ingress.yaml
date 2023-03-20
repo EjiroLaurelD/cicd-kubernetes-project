@@ -2,24 +2,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: portfolio-ingress
-  namespace: portfolio
+  name: monitoring-ingress
+  namespace: monitoring
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-dns
-    kubernetes.io/ingress.className: "nginx"
+     cert-manager.io/cluster-issuer: letsencrypt-dnsi
+     kubernetes.io/ingress.className: "nginx"
 spec:
-  tls:
-   - hosts:
-       
+  ingressClassName: nginx
   rules:
-    - host: "portfolio.ejirolaureld.me"
+    - host: "prometheus.ejirolaureld.me"
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: portfolio
+                name: prometheus
                 port:
                   number: 80
-

@@ -2,19 +2,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prometheus-ingress
+  name: monitoring-ingress
   namespace: monitoring
   annotations:
-    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name
-spec:    
+     cert-manager.io/cluster-issuer: letsencrypt-dnsi
+     kubernetes.io/ingress.className: "nginx"
+spec:
+  ingressClassName: nginx
   rules:
-    - host: "prometheus.ejirolaureld.me"
+    - host: "grafana.ejirolaureld.me"
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: prometheus
+                name: grafana
                 port:
                   number: 80

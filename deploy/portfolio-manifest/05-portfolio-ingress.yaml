@@ -2,19 +2,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana-ingress
-  namespace: monitoring
+  name: portfolio-ingress
+  namespace: portfolio
   annotations:
-    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name   
+     cert-manager.io/cluster-issuer: letsencrypt-dnsi
+     kubernetes.io/ingress.className: "nginx"
 spec:
+  ingressClassName: nginx
   rules:
-    - host: "grafana.ejirolaureld.me"
+    - host: "portfolio.ejirolaureld.me"
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: grafana-service
+                name: portfolio
                 port:
                   number: 80

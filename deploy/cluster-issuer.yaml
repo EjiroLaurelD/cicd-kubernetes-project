@@ -4,7 +4,6 @@ kind: Secret
 metadata:
   name: cluster-issuer-secret
   namespace: kube-system
-  secret-access-key: MTQzWGpCdVpmaXhsbTBIcDIyOXhtUVRLOHFuZ3pKNXFLOXhBb1JEdw==
 type: Opaque
 ---
 apiVersion: cert-manager.io/v1
@@ -13,39 +12,19 @@ metadata:
   name: letsencrypt-dns
 spec:
   acme:
-   server: https://acme-v02.api.letsencrypt.org/directory
-      solvers:            
-      - dns01: 
-        route53:
-          accessKeyID: QUtJQVkyQTZGWTdaMjNMT1lQRk8
-          hostedZoneID: WjA4NTQ3NDVTNFNTR05WNE05TzM=
-          region: us-east-1
-          secretAccessKeySecretRef:
-            name: cluster-issuer-secret
-            key: MTQzWGpCdVpmaXhsbTBIcDIyOXhtUVRLOHFuZ3pKNXFLOXhBb1JEdw==
-    email: ZGFmZWxhdXJlbGVAZ21haWwuY29t
-    privateKeySecretRef:
-      name: lets-encrypt-issuer-dev
     server: https://acme-v02.api.letsencrypt.org/directory
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: wildcard-cert
-  namespace: kube-system
-spec:
-  dnsNames:
-  - '*.ejirolaureld.me'
-  issuerRef:
-    kind: ClusterIssuer
-    name: letsencrypt-dns
-  acme:
-    config:
-    - dns01:
-        provider: route53
-      domains:
-      - '*.ejirolaureld.me'
-  secretName: wildcard-cert
+    email: "ZGFmZWxhdXJlbGVAZ21haWwuY29t"
+    privateKeySecretRef:
+      name: wildcard-cert-bkcvg
+    solvers:            
+      - dns01: 
+          route53:
+            accessKeyID: "QUtJQVkyQTZGWTdaMjNMT1lQRk8"
+            hostedZoneID: "WjA4NTQ3NDVTNFNTR05WNE05TzM="
+            region: us-east-1
+            secretAccessKeySecretRef:
+              name: cluster-issuer-secret
+              key: "MTQzWGpCdVpmaXhsbTBIcDIyOXhtUVRLOHFuZ3pKNXFLOXhBb1JEdw=="
 
 
   #---

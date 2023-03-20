@@ -23,10 +23,10 @@ pipeline {
                     dir('deploy') {
                         sh "aws eks --region us-east-1 update-kubeconfig --name myapps"
                         sh "kubectl apply -f complete-demo.yaml"
-                        sh "kubectl apply -f porfolio"
+                        sh "kubectl apply -f porifolio-manifest"
                         sh "kubectl apply -f manifests-monitoring"
                         sh "kubectl apply -f manifests-alerting"
-                        sh "kubectl apply -f ingress.yaml"
+                        sh "kubectl apply -f fingress.yaml"
                         sh "sleep 120s"
                         sh "kubectl get deployment -n sockshop"
                         sh "kubectl get deployment -n portfolio"
