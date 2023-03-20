@@ -55,19 +55,15 @@ module "eks_cluster" {
   tags = merge(var.tags, {
     "Name" = "eks-cluster-${var.name}-${data.aws_region.current.name}"
   })
-  node_security_group_additional_rules = {
-    # nginx-ingress requires the cluster to communicate with the ingress controller
-    cluster_to_node = {
-      description      = "Cluster to ingress-nginx webhook"
-      protocol         = "tcp"
-      from_port        = 8443
-      to_port          = 8443
-      type             = "ingress"
-      source_cluster_security_group = true
-    }
+#  node_security_group_additional_rules = {
+ #   # nginx-ingress requires the cluster to communicate with the ingress controller
+  #  cluster_to_node = {
+   #   description      = "Cluster to ingress-nginx webhook"
+    #  protocol         = "tcp"
+     ###ype             = "ingress"
+      #source_cluster_security_group = true
+    #}
   }
-
-}
 
 #resource "null_resource" "deploy-manifests" {
  # provisioner "local-exec" {

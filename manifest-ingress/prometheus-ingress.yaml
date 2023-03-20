@@ -5,8 +5,7 @@ metadata:
   name: prometheus-ingress
   namespace: monitoring
   annotations:
-    kubernetes.io/ingress.className: "nginx"          
-    cert-manager.io/cluster-issuer: cert-manager
+    cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name
 spec:    
   rules:
     - host: "prometheus.ejirolaureld.me"

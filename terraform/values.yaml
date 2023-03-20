@@ -1,13 +1,9 @@
 ---
-global:
-  podSecurityPolicy:
-    enabled: true
-    useAppArmor: true
+installCRDs: true
 prometheus:
   enabled: true
-installCRDs: true
 serviceAccount:
-  name: 
+  name: cert-manager 
   annotations:
     "eks.amazonaws.com/role-arn": aws_iam_role.route53.arn
 securityContext:

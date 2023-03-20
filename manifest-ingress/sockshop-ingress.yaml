@@ -5,8 +5,7 @@ metadata:
   name: sockshop-ingress
   namespace: sock-shop
   annotations:
-    kubernetes.io/ingress.class: "nginx"          
-    cert-manager.io/cluster-issuer: cert-manager 
+     cert-manager.io/cluster-issuer: module.cert_manager.cluster_issuer_name 
 spec:
   rules:
     - host: "sockshop.ejirolaureld.me"

@@ -6,7 +6,7 @@ data "aws_iam_policy_document" "route53_role_policy" {
     condition {
       test     = "StringEquals"
       variable = "${replace(module.eks_cluster.cluster_oidc_issuer_url, "https://", "")}:sub"
-      values   = ["system:serviceaccount:${kubernetes_namespace.cm.metadata[0].name}:cert-manager"]
+      values   = ["system:serviceaccount:${kubernetes_namespace.cert-manager-app.metadata[0].name}:cert-manager"]
     }
 
     principals {

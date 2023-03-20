@@ -20,11 +20,11 @@ module "nginx-controller" {
        value = "controller"
      }
   ]
-  depends_on = [module.eks_cluster, module.cert_manager, module.nginx-controller]
+  depends_on = [module.eks_cluster, helm_release.cert-manager]
 
 }
-resource "null_resource" "get_nlb_hostname" {
-  provisioner "local-exec" {
-    command = "aws eks update-kubeconfig --name myappsv --region ${var.region} && kubectl get svc fullnameOverridevalue-controller.namevalue -n '${module.nginx-controller.kubernetes_namespace.metadata[0].name}' -o jsonpath='{.status.loadBalancer.ingress[*].hostname}' > ${path.module}/lb_hostname.txt"
-  }
-}
+#resource "null_resource" "get_nlb_hostname" {
+ # provisioner "local-exec" {
+  #  command = "aws eks update-kubeconfig --name myappsv --region ${var.region} && kubectl get svc fullnameOverridevalue-controller.namevalue -n '${module.nginx-controller.kubernetes_namespace.metadata[0].name}' -o jsonpath='{.status.loadBalancer.ingress[*].hostname}' > ${path.module}/lb_hostname.txt"
+ # }
+#}
