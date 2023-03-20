@@ -4,12 +4,24 @@ locals {
 
 module "eks_cluster" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "18.25.0"
+  version = "19.0"
 
   cluster_name                    = local.cluster_name
   cluster_version                 = var.cluster_version
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
+
+  cluster_addons = {
+    coredns = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
+    vpc-cni = {
+      most_recent = true
+    }
+  }
 
   subnet_ids = [aws_subnet.private[0].id, aws_subnet.private[1].id, aws_subnet.private[2].id]
   vpc_id     = aws_vpc.main.id
@@ -57,10 +69,10 @@ module "eks_cluster" {
 
 }
 
-resource "null_resource" "deploy-manifests" {
-  provisioner "local-exec" {
-    command = " aws eks update-kubeconfig --name myapps --region ${var.region} ; kubectl delete -f ../portfolio-manifest ; kubectl delete -f ../complete-demo.yaml; kubectl delete -f ../manifest-ingress ; kubectl delete -f ../manifests-monitoring"
-}
-  depends_on = [module.eks_cluster]
-}
+#resource "null_resource" "deploy-manifests" {
+ # provisioner "local-exec" {
+  #  command = " aws eks update-kubeconfig --name myapps --region ${var.region} ; kubectl apply -f complete-demo.yaml ; kubectl delete -f ../complete-demo.yaml; kubectl delete -f ../manifest-ingress ; kubectl delete -f ../manifests-monitoring"
+#}
+ # depends_on = [module.eks_cluster]
+#}
 

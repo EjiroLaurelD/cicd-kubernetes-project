@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: wildcard-ingress-cert
+  namespace: kube-system
+spec:
+  dnsNames:
+  - '*.ZWppcm9sYXVyZWxkLm1l'
+  issuerRef:
+    kind: ClusterIssuer
+    name: lets-encrypt-issuer-dev
+  acme:
+    config:
+    - dns01:
+        provider: route53
+      domains:
+      - '*.ZWppcm9sYXVyZWxkLm1l'
+  secretName: wildcard-ingress-cert
+

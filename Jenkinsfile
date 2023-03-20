@@ -23,7 +23,7 @@ pipeline {
                     dir('kubernetes') {
                         sh "aws eks --region us-east-1 update-kubeconfig --name Eks-cluster"
                         sh "kubectl apply -f sock-shop.yaml"
-                        sh "kubectl apply -f porfolio.yml"
+                        sh "kubectl apply -f porfolio.yaml"
                         sh "kubectl apply -f manifests-monitoring"
                         sh "sleep 120s"
                         sh "kubectl get deployment -n sockshop"

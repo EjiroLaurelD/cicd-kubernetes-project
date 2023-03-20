@@ -1,0 +1,14 @@
+---
+global:
+  podSecurityPolicy:
+    enabled: true
+    useAppArmor: true
+prometheus:
+  enabled: true
+installCRDs: true
+serviceAccount:
+  name: 
+  annotations:
+    "eks.amazonaws.com/role-arn": aws_iam_role.route53.arn
+securityContext:
+   fsGroup: 1001
