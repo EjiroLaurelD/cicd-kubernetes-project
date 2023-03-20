@@ -11,5 +11,12 @@ module "nginx-controller" {
       value = "true"
       type  = "string"
     },
+   {
+      name  = "controller.service.type"
+      value = "NodePort"
+    }
+
   ]
 }
+
+

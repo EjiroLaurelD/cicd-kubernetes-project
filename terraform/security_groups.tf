@@ -11,7 +11,7 @@ resource "aws_security_group" "allow-web-traffic" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    #description = "HTTPS"
+    description = "HTTPS"
     from_port   = 8443
     to_port     = 8443
     protocol    = "tcp"
