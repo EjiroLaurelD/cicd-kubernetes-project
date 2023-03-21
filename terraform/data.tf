@@ -1,10 +1,9 @@
 data "aws_region" "current" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = "myapps"
-  depends_on = [module.eks_cluster]
+  name = module.eks_cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = "myapps"
+  name = module.eks_cluster.cluster_id
 }
