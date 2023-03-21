@@ -6,7 +6,7 @@ module "eks_cluster" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.0"
 
-  cluster_name                    = local.cluster_name
+  cluster_name                    = "myapps"
   cluster_version                 = var.cluster_version
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
