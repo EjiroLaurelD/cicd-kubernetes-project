@@ -75,11 +75,20 @@ module "eks_cluster" {
 
 }
   }
+#resource "null_resource" "eks_master_worker_join" {
 
-#resource "null_resource" "deploy-manifests" {
-#  provisioner "local-exec" {
-    #command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
-#}
- # depends_on = [module.eks_cluster]
-#}
+ # provisioner "local-exec" {
+
+   # command = "sh /Users/dhineshbabu.elango/Documents/Terraform_shellScripts/bin/eks_app_provision.sh ${module.my_cluster.cluster_id}"
+
+  #}
+
+}
+
+resource "null_resource" "deploy-manifests" {
+  provisioner "local-exec" {
+    #command = "sh aws eks update-kubeconfig --name myapps --region ${var.region} ${module.my_cluster.cluster_id"
+}
+  depends_on = [module.eks_cluster]
+}
 
