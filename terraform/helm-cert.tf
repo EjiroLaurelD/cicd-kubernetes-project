@@ -4,9 +4,9 @@ resource "kubernetes_namespace" "cert-manager-app" {
   }
 }
 resource "helm_release" "cert-manager" {
-  namespace = replace(format("%s#%s","cert-manager", module.eks_cluster.cluster_id), "/#.*/","") 
+  #namespace = replace(format("%s#%s","cert-manager", module.eks_cluster.cluster_id), "/#.*/","") 
   name = "cert-manager" 
-  #namespace        = kubernetes_namespace.cert-manager-app.metadata[0].name
+  namespace        = kubernetes_namespace.cert-manager-app.metadata[0].name
   timeout          = 1000
   create_namespace = false
   chart            = "cert-manager"
