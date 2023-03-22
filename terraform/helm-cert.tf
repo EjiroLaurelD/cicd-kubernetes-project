@@ -2,7 +2,6 @@ resource "kubernetes_namespace" "cert-manager-app" {
   metadata {
     name = "cert-manager"
   }
-  depends_on = [helm_release.cert-manager]
 }
 resource "helm_release" "cert-manager" {
   name             = "cert-manager"
@@ -15,6 +14,6 @@ resource "helm_release" "cert-manager" {
   values = [
     file("values.yaml")
   ]
-  depends_on = [null_resource.deploy-manifests, kubernetes_namespace.cert-manager-app, aws_iam_role.route53 ]
+  depends_on = [module.eks_cluster, kubernetes_namespace.cert-manager-app, aws_iam_role.route53 ]
 
 }
