@@ -1,12 +1,12 @@
-#locals {
- # cluster_name = "eks-cluster-${var.name}-${data.aws_region.current.name}"
-#}
+locals {
+  cluster_name = "eks-cluster-${var.name}-${data.aws_region.current.name}"
+}
 
 module "eks_cluster" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.0"
 
-  cluster_name                    = "myapps"
+  cluster_name                    = local.cluster_name
   cluster_version                 = var.cluster_version
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
