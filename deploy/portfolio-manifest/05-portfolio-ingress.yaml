@@ -9,10 +9,10 @@ metadata:
      kubernetes.io/ingress.className: "nginx"
 spec:
   ingressClassName: nginx
-    tls: 
-     - hosts: 
-         - "*.ejirolaureld.me"
-       secretName: wildcard-cert    
+  tls: 
+    - hosts: 
+        - "*.ejirolaureld.me"
+      secretName: wildcard-cert
   rules:
     - host: "portfolio.ejirolaureld.me"
       http:
