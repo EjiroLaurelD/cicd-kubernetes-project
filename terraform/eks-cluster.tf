@@ -63,12 +63,17 @@ module "eks_cluster" {
      ###ype             = "ingress"
       #source_cluster_security_group = true
     #}
+ provisioner "local-exec" {
+
+   command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
+
+}
   }
 
-resource "null_resource" "deploy-manifests" {
-  provisioner "local-exec" {
-    command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
-}
-  depends_on = [module.eks_cluster]
-}
+#resource "null_resource" "deploy-manifests" {
+#  provisioner "local-exec" {
+    #command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
+#}
+ # depends_on = [module.eks_cluster]
+#}
 
