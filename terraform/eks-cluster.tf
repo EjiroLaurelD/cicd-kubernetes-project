@@ -83,7 +83,7 @@ module "eks_cluster" {
 
   #}
 
-}
+#}
 
 resource "null_resource" "deploy-manifests" {
   provisioner "local-exec" {
