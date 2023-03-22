@@ -85,10 +85,10 @@ module "eks_cluster" {
 
 #}
 
-resource "null_resource" "deploy-manifests" {
-  provisioner "local-exec" {
-    command = "sh aws eks update-kubeconfig --region ${var.region} --name ${module.eks_cluster.cluster_id} "
-}
-  depends_on = [module.eks_cluster]
-}
+#resource "null_resource" "deploy-manifests" {
+  #provisioner "local-exec" {
+   # command = "sh aws eks update-kubeconfig --region ${var.region} --name ${module.eks_cluster.cluster_id} "
+#}
+ # depends_on = [module.eks_cluster]
+#}
 
