@@ -10,10 +10,10 @@
 - 
 - Below are url of the apps deployed  
 
-- [Portfolio](/https://portfolio.ejirolaureld.me)
-- [Sockshop](/https://sockshop.ejirolaureld.me)
-- [Grafana](/https://grafana.ejirolaureld.me)
-- [Prometheus](/https://prometheus.ejirolaureld.me)
+- [Portfolio](https://portfolio.ejirolaureld.me)
+- [Sockshop](https://sockshop.ejirolaureld.me)
+- [Grafana](https://grafana.ejirolaureld.me)
+- [Prometheus](https://prometheus.ejirolaureld.me)
 
 ![sock](./sockshop.png)
 ![sock](./sockshop1.png)  
