@@ -49,7 +49,13 @@ module "eks_cluster" {
         "Name" = "sockshop-${var.name}-${data.aws_region.current.name}"
       })
     }
-    
+    provisioner "local-exec" {
+
+   command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
+
+}
+
+  }
   }
 
   tags = merge(var.tags, {
@@ -63,9 +69,9 @@ module "eks_cluster" {
      ###ype             = "ingress"
       #source_cluster_security_group = true
     #}
- provisioner "local-exec" {
+ #provisioner "local-exec" {
 
-   command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
+  # command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
 
 }
   }
