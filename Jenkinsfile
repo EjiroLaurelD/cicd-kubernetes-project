@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     dir('deploy') {
-                        sh "aws eks --region us-east-1 update-kubeconfig --name ${local.cluster_name}"
+                        sh "aws eks --region us-east-1 update-kubeconfig --name ${module.eks_cluster.cluster_name}"
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f porifolio-manifest"
                         sh "kubectl apply -f manifests-monitoring"
