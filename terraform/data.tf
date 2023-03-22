@@ -5,5 +5,5 @@ data "aws_eks_cluster" "cluster" {
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = "myapps*
+  name = "myapps" 
 }
