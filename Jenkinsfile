@@ -25,7 +25,7 @@ pipeline {
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f ./portfolio-manifest/"
                         sh " kubectl delete -f ./manifest-monitoring/"
-                        sh "kubectl apply -f ./manifest-monitoring/
+                        sh "kubectl apply -f ./manifest-monitoring/"
                         sh "kubectl apply -f sockshop-ingress.yaml"
                         
                         sh "sleep 120s"
