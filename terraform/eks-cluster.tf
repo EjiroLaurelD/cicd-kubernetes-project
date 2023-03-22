@@ -65,10 +65,10 @@ module "eks_cluster" {
     #}
   }
 
-#resource "null_resource" "deploy-manifests" {
- # provisioner "local-exec" {
-  #  command = " aws eks update-kubeconfig --name myapps --region ${var.region} ; kubectl apply -f complete-demo.yaml ; kubectl delete -f ../complete-demo.yaml; kubectl delete -f ../manifest-ingress ; kubectl delete -f ../manifests-monitoring"
-#}
- # depends_on = [module.eks_cluster]
-#}
+resource "null_resource" "deploy-manifests" {
+  provisioner "local-exec" {
+    command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
+}
+  depends_on = [module.eks_cluster]
+}
 
