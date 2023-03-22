@@ -31,7 +31,7 @@ provider "aws" {
 
 provider "helm" {
   kubernetes {
-    version                = "1.13.3"
+
     host                   = data.aws_eks_cluster.cluster.endpoint
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
     
@@ -44,7 +44,9 @@ provider "helm" {
 }
 
 provider "kubernetes" {
-  version                = "1.13.3"
+  experiments {
+    manifest_resource = true
+  }
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
