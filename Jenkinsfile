@@ -24,7 +24,6 @@ pipeline {
                         sh "aws eks --region us-east-1 update-kubeconfig --name eks-cluster-dev-env-us-east-1"
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f ./portfolio-manifest/"
-                        sh " kubectl delete -f ./manifest-monitoring/"
                         sh "kubectl apply -f ./manifest-monitoring/"
                         sh "kubectl apply -f sockshop-ingress.yaml"
                         
