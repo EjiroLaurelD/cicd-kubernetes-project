@@ -25,8 +25,6 @@ pipeline {
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f ./portfolio-manifest/"
                         sh " kubectl delete -f ./manifest-monitoring/"
-                        #sh "kubectl apply -f ./manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')" jenkins groovy language couldn't read
-                        #sh "kubectl apply -f ./manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)" grovy language could read
                         sh "kubectl apply -f ./manifest-monitoring/
                         sh "kubectl apply -f sockshop-ingress.yaml"
                         
