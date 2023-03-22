@@ -25,17 +25,11 @@ pipeline {
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f ./portfolio-manifest/"
                         sh " kubectl delete -f ./manifest-monitoring/"
-                        sh "sleep 50s"
-                        sh "kubectl apply -f ./manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
-                        sh "sleep 50s"
-                        sh "kubectl apply -f ./manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
-                        sh "sleep 50s"
-                        sh "kubectl apply -f ./manifest-monitoring/23-grafana-import-dash-batch.yaml
-                        sh "sleep 50s"
-                        sh "kubectl apply -f ./manifest-monitoring/grafana-ingress.yaml"
-                        sh "kubectl apply -f ./manifest-monitoring/prometheus-ingress.yaml"
-
-
+                        #sh "kubectl apply -f ./manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')" jenkins groovy language couldn't read
+                        #sh "sleep 50s"
+                        #sh "kubectl apply -f ./manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)" grovy language could read
+                        #sh "sleep 50s"
+                        sh "kubectl apply -f ./manifest-monitoring/
                         sh "kubectl apply -f sockshop-ingress.yaml"
                         sh "sleep 120s"
                         sh "kubectl get deployment -n sockshop"
