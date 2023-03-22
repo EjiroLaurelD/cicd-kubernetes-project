@@ -73,7 +73,7 @@ module "eks_cluster" {
 
   # command = " aws eks update-kubeconfig --name myapps --region ${var.region}"
 
-}
+#}
   }
 #resource "null_resource" "eks_master_worker_join" {
 
