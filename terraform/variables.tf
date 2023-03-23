@@ -83,14 +83,7 @@ variable "group_capacity_type" {
   description = "The instance capacity type, it could be spot, on-demand or dedicated"
   default = "ON_DEMAND"
 }
-variable "jenkins_admin_password" {
-  type = string
-  description = "jenkins username"
-}
-variable "jenkins_admin_user" {
-  type = string
-  description = "jenkins user password"
-}
+
 #variable "honeycomb_api_key"{
  # type = string
   #description = "PAi key to access honeycomb.io"
