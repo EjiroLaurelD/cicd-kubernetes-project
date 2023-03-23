@@ -11,7 +11,7 @@ spec:
   ingressClassName: nginx
   tls: 
     - hosts: 
-        - "*.ejirolaureld.me"
+        - "portfolio.ejirolaureld.me"
       secretName: wildcard-cert
   rules:
     - host: "portfolio.ejirolaureld.me"
