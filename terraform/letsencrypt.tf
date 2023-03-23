@@ -7,18 +7,18 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: "ZGFmZWxhdXJlbGVAZ21haWwuY29t"
+    email: "dafelaurele@gmail.com"
     privateKeySecretRef:
       name: wildcard-cert-bkcvg
     solvers:            
       - dns01: 
           route53:
-            accessKeyID: "QUtJQVkyQTZGWTdaMjNMT1lQRk8"
-            hostedZoneID: "WjA4NTQ3NDVTNFNTR05WNE05TzM="
+            #accessKeyID: "QUtJQVkyQTZGWTdaMjNMT1lQRk8"
+            hostedZoneID: "Z0854745S4SSGNV4M9O3"
             region: us-east-1
-            secretAccessKeySecretRef:
-              name: cluster-issuer-secret
-              key: "MTQzWGpCdVpmaXhsbTBIcDIyOXhtUVRLOHFuZ3pKNXFLOXhBb1JEdw=="
+            #secretAccessKeySecretRef:
+             # name: cluster-issuer-secret
+              #key: "MTQzWGpCdVpmaXhsbTBIcDIyOXhtUVRLOHFuZ3pKNXFLOXhBb1JEdw=="
   YAML
    
   depends_on = [helm_release.cert-manager]
