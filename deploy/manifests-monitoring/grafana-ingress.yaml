@@ -11,7 +11,7 @@ spec:
   tls: 
     - hosts: 
         - "grafana.ejirolaureld.me"
-      secretName: wildcard-cert
+      secretName: wildcard-cert-f8f62
 
   rules:
     - host: "grafana.ejirolaureld.me"
