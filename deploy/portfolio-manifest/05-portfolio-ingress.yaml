@@ -2,17 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: portfolio-ingress
+  name: portfolio
   namespace: portfolio
   annotations:
-     cert-manager.io/cluster-issuer: letsencrypt-dnsi
-     kubernetes.io/ingress.className: "nginx"
+     cert-manager.io/cluster-issuer: letsencrypt-dns
+     kubernetes.io/ingress.class: "nginx"
 spec:
   ingressClassName: nginx
   tls: 
     - hosts: 
         - "portfolio.ejirolaureld.me"
-      secretName: wildcard-cert-5htsl
+      secretName: wildcard-cert-f8f62-vb947
   rules:
     - host: "portfolio.ejirolaureld.me"
       http:
