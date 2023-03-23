@@ -11,4 +11,4 @@ spec:
     name: letsencrypt-dns      
     kind: ClusterIssuer
   secretName: "wildcard-cert"
-  commonName: "*.ejirolaureld.live"
+  commonName: "*.ejirolaureld.me"
