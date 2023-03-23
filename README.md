@@ -22,8 +22,8 @@
 - Below are url of the apps deployed  
 
 # PLEASE NOTE
-Ensure to use a spare domain name for your project until you are ready for final deployment. I realised i maxed out on my certifcate while i was testing, so please have a spare one to use after testing to ensure encryption. I didnt have a spare one to use so i had to make use of the certficate without encrytion.
-or to be safe run your letsencrypt file outside of terraform. deploy directly on kubernetes after your infrastructrue is up
+Ensure to have a spare domain name for your project until you are ready for final deployment. I realised i maxed out on my certifcate while i was testing, so please have a spare one to use after testing to ensure encryption. I didnt have a spare one to use so i had to make use of the certficate without encrytion.
+or to be safe run your letsencrypt file outside of terraform. deploy directly on your kubernetes cluster after your infrastructrue is up
 
 - [Portfolio](https://portfolio.ejirolaureld.me)
 - [Sockshop](https://sockshop.ejirolaureld.me)
