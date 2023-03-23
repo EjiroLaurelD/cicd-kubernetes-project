@@ -12,7 +12,7 @@ spec:
   tls: 
     - hosts: 
         - "portfolio.ejirolaureld.me"
-      secretName: wildcard-cert
+      secretName: wildcard-cert-5htsl
   rules:
     - host: "portfolio.ejirolaureld.me"
       http:
