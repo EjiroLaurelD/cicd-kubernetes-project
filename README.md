@@ -15,11 +15,11 @@
 - [Prometheus](https://prometheus.ejirolaureld.me)
 - [Grafana](https://grafana.ejirolaureld.me)
 
+![portfolio](./images/portfolio.png)
 ![sock](./images/sockshop.png)
 ![sock](./images/sockshop1.png)  
 ![sock](./images/sockshop2.png)  
 ![sock](./images/sockshop3.png)  
 ![sock](./images/sockshop4.png)  
-![portfolio](./images/portfolio.png)
 ![grafana](./images/grafana.png)  
 ![prometheus](./images/prometheus.png)  
