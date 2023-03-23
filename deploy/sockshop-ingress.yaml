@@ -12,7 +12,7 @@ spec:
   tls: 
     - hosts: 
         - "sockshop.ejirolaureld.me"
-      secretName: wildcard-cert
+      secretName: wildcard-cert-jvdxs
   rules:
     - host: "sockshop.ejirolaureld.me"
       http:
