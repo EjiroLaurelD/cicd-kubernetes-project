@@ -24,4 +24,4 @@ spec:
               service:
                 name: prometheus
                 port:
-                  number: 80
+                  number: 9090
