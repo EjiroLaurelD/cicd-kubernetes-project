@@ -1,8 +1,8 @@
-# cicd-kubernetes-project
+# cicd-iaac-kubernetes-project
 
 ## Project Instructions
 
-### Everything nneeds to be deployed using Infrastructure as a code approach
+### Everything needs to be deployed using Infrastructure as a code approach
 - Deploy a microservice based architecture on Kubernetes and create a clear Iaac deployment 
 - Deploy a web app of your choosing with nginx/httpd frontend proxy and a database (mongo,postresgl etc) backend.
 - Provision the Socks Shop example microservice application https://github.com/microservices-demo/microservices-demo
@@ -19,6 +19,7 @@
 
 - I got a letsencrypt acme certificate using Kubernetes certificate manager and used nginx controller to route traffic from the network load balancer created in the cluster to route 53.
 - 
+- I deployed my apps to the cluster provisoned using the Jenkins pipeline script.
 - Below are url of the apps deployed  
 
 - [Portfolio](https://portfolio.ejirolaureld.me)
