@@ -6,9 +6,9 @@ metadata:
   namespace: cert-manager
 spec:
   dnsNames:
-  - '*.ejirolaureld.me'
+  - '*.ejirolaureld.live'
   issuerRef:
     name: letsencrypt-dns      
     kind: ClusterIssuer
   secretName: "wildcard-cert"
-  commonName: "*.ejirolaureld.me"
+  commonName: "*.ejirolaureld.live"
