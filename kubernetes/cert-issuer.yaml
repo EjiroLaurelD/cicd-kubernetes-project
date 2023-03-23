@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   dnsNames:
-  - '*.ZWppcm9sYXVyZWxkLm1l'
+  - '*.ejirolaureld.me'
   issuerRef:
     kind: ClusterIssuer
     name: lets-encrypt-issuer-dev
@@ -14,6 +14,6 @@ spec:
     - dns01:
         provider: route53
       domains:
-      - '*.ZWppcm9sYXVyZWxkLm1l'
+      - '*.ejirolaureld.me'
   secretName: wildcard-ingress-cert
 

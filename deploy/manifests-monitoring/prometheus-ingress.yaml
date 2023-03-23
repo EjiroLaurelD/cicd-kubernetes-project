@@ -10,7 +10,7 @@ spec:
   ingressClassName: nginx
   tls: 
     - hosts: 
-        - "*.ejirolaureld.me"
+        - "prometheus.ejirolaureld.me"
       secretName: wildcard-cert
 
   rules:
