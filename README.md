@@ -18,9 +18,12 @@
 - I also attempted to set up Honeycomb.io for traces, everything needed for observability(metrics, logs and trace).
 
 - I got a letsencrypt acme certificate using Kubernetes certificate manager and used nginx controller to route traffic from the network load balancer created in the cluster to route 53.
-- 
 - I deployed my apps to the cluster provisoned using the Jenkins pipeline script.
 - Below are url of the apps deployed  
+
+# PLEASE NOTE
+Ensure to use a spare domain name for your project until you are ready for final deployment. I realised i maxed out on my certifcate while i was testing, so please have a spare one to use after testing to ensure encryption. I didnt have a spare one to use so i had to make use of the certficate without encrytion.
+or to be safe run your letsencrypt file outside of terraform. deploy directly on kubernetes after your infrastructrue is up
 
 - [Portfolio](https://portfolio.ejirolaureld.me)
 - [Sockshop](https://sockshop.ejirolaureld.me)
